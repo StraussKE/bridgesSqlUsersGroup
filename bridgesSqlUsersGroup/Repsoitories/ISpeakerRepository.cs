@@ -11,5 +11,9 @@ namespace bridgesSqlUsersGroup.Repsoitories
         IQueryable<Speaker> Speakers { get; }
 
         void AddSpeaker(Speaker speaker);
+
+        void AddReview(Meeting meeting, Review review);
+
+        void AddReview(Meeting meeting, Review parent, Review child);
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 
-namespace bridgesSqlUsersGroup.Models.ViewModels
+namespace bridgesSqlUsersGroup.Models
 {
     public class LoginModel
     {

@@ -19,9 +19,9 @@ namespace bridgesSqlUsersGroup.Models
         public string SpeakerBio { get; set; }
 
         // list of Meetings this speaker has spoken at
-        public virtual List<Meeting> MeetingsSpokenAt { get; set; }
+        public virtual List<MeetingSpeaker> MeetingsSpokenAt { get; set; }
 
         public virtual List<Dictionary<User, int>> SpeakerRatings { get; set; } // UserID and rating
-        public virtual List<Dictionary<User, string>> SpeakerReviews { get; set; } // UserID and review body
+        public virtual List<Review> SpeakerReviews { get; set; } // UserID and review body
     }
 }

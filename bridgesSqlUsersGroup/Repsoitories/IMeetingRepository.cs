@@ -11,5 +11,9 @@ namespace bridgesSqlUsersGroup.Repsoitories
         IQueryable<Meeting> Meetings { get; }
 
         void AddMeeting (Meeting meeting);
+
+        void AddReview(Meeting meeting, Review review);
+
+        void AddReview(Meeting meeting, Review parent, Review child);
     }
 }

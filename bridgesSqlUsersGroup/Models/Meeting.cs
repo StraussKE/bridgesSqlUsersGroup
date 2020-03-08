@@ -15,12 +15,13 @@ namespace bridgesSqlUsersGroup.Models
         public string Topic { get; set; }
         public string Description { get; set; }
 
-        public virtual List<Speaker> MeetingSpeakers { get; set; }
-        public virtual List<Tag> MeetingTags { get; set; }
-        public virtual List<Sponsor> MeetingSponsors { get; set; }
-        public virtual List<User> MeetingAtendees { get; set; }
+        public List<Review> Reviews {get;set;} // reviews are a pain and I do not love them
+
+        public virtual List<MeetingSpeaker> MeetingSpeakers { get; set; }
+        public virtual List<MeetingTag> MeetingTags { get; set; }
+        public virtual List<MeetingSponsor> MeetingSponsors { get; set; }
+        public virtual List<UserMeeting> MeetingAtendees { get; set; }
 
         public virtual List<Dictionary<User, int>> MeetingRatings { get; set; } // UserID and rating
-        public virtual List<Dictionary<User, string>> MeetingReviews { get; set; } // UserID and review body
     }
 }
