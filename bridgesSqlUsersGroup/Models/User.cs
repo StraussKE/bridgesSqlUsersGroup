@@ -14,11 +14,11 @@ namespace bridgesSqlUsersGroup.Models
 
         public DateTime CreatedAccount { get; set; }
 
-        // list of events that the user has attended
-        public virtual List<Event> AttendedEvents { get; set; }
+        // list of GroupEvents that the user has attended
+        public virtual List<GroupEvent> AttendedGroupEvents { get; set; }
 
-        // list of reviews that the user has written for events
-        public virtual List<Dictionary<Event, string>> ReviewedEvents { get; set; }
+        // list of reviews that the user has written for GroupEvents
+        public virtual List<Dictionary<GroupEvent, string>> ReviewedGroupEvents { get; set; }
 
         // list of reviews that the user has written for speakers
         public virtual List<Dictionary<Speaker, string>> ReviewedSpeakers { get; set; }

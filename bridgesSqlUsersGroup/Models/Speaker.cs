@@ -18,8 +18,8 @@ namespace bridgesSqlUsersGroup.Models
         // Biographical details for the speaker
         public string SpeakerBio { get; set; }
 
-        // list of events this speaker has spoken at
-        public virtual List<Event> EventsSpokenAt { get; set; }
+        // list of GroupEvents this speaker has spoken at
+        public virtual List<GroupEvent> GroupEventsSpokenAt { get; set; }
 
         public virtual List<Dictionary<User, int>> SpeakerRatings { get; set; } // UserID and rating
         public virtual List<Dictionary<User, string>> SpeakerReviews { get; set; } // UserID and review body

@@ -261,7 +261,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 				src = target[ name ];
 				copy = options[ name ];
 
-				// Prevent never-ending loop
+				// PrGroupEvent never-ending loop
 				if ( target === copy ) {
 					continue;
 				}
@@ -483,7 +483,7 @@ function( i, name ) {
 function isArrayLike( obj ) {
 
 	// Support: real iOS 8.2 only (not reproducible in simulator)
-	// `in` check used to prevent JIT error (gh-2145)
+	// `in` check used to prGroupEvent JIT error (gh-2145)
 	// hasOwn isn't used here due to false negatives
 	// regarding Nodelist length in IE
 	var length = !!obj && "length" in obj && obj.length,
@@ -1086,12 +1086,12 @@ setDocument = Sizzle.setDocument = function( node ) {
 		(subWindow = document.defaultView) && subWindow.top !== subWindow ) {
 
 		// Support: IE 11, Edge
-		if ( subWindow.addEventListener ) {
-			subWindow.addEventListener( "unload", unloadHandler, false );
+		if ( subWindow.addGroupEventListener ) {
+			subWindow.addGroupEventListener( "unload", unloadHandler, false );
 
 		// Support: IE 9 - 10 only
-		} else if ( subWindow.attachEvent ) {
-			subWindow.attachEvent( "onunload", unloadHandler );
+		} else if ( subWindow.attachGroupEvent ) {
+			subWindow.attachGroupEvent( "onunload", unloadHandler );
 		}
 	}
 
@@ -2704,7 +2704,7 @@ support.sortDetached = assert(function( el ) {
 });
 
 // Support: IE<8
-// Prevent attribute/property "interpolation"
+// PrGroupEvent attribute/property "interpolation"
 // https://msdn.microsoft.com/en-us/library/ms536429%28VS.85%29.aspx
 if ( !assert(function( el ) {
 	el.innerHTML = "<a href='#'></a>";
@@ -3206,7 +3206,7 @@ function createOptions( options ) {
  *	options: an optional list of space-separated options that will change how
  *			the callback list behaves or a more traditional option object
  *
- * By default a callback list will act like an event callback list and can be
+ * By default a callback list will act like an GroupEvent callback list and can be
  * "fired" multiple times.
  *
  * Possible options:
@@ -3239,7 +3239,7 @@ jQuery.Callbacks = function( options ) {
 		// Flag to know if list was already fired
 		fired,
 
-		// Flag to prevent firing
+		// Flag to prGroupEvent firing
 		locked,
 
 		// Actual callback list
@@ -3855,7 +3855,7 @@ jQuery.extend( {
 	isReady: false,
 
 	// A counter to track how many items to wait for before
-	// the ready event fires. See #6781
+	// the ready GroupEvent fires. See #6781
 	readyWait: 1,
 
 	// Handle when the DOM is ready
@@ -3869,7 +3869,7 @@ jQuery.extend( {
 		// Remember that the DOM is ready
 		jQuery.isReady = true;
 
-		// If a normal DOM Ready event fired, decrement, and wait if need be
+		// If a normal DOM Ready GroupEvent fired, decrement, and wait if need be
 		if ( wait !== true && --jQuery.readyWait > 0 ) {
 			return;
 		}
@@ -3881,15 +3881,15 @@ jQuery.extend( {
 
 jQuery.ready.then = readyList.then;
 
-// The ready event handler and self cleanup method
+// The ready GroupEvent handler and self cleanup method
 function completed() {
-	document.removeEventListener( "DOMContentLoaded", completed );
-	window.removeEventListener( "load", completed );
+	document.removeGroupEventListener( "DOMContentLoaded", completed );
+	window.removeGroupEventListener( "load", completed );
 	jQuery.ready();
 }
 
 // Catch cases where $(document).ready() is called
-// after the browser event has already occurred.
+// after the browser GroupEvent has already occurred.
 // Support: IE <=9 - 10 only
 // Older IE sometimes signals "interactive" too soon
 if ( document.readyState === "complete" ||
@@ -3900,11 +3900,11 @@ if ( document.readyState === "complete" ||
 
 } else {
 
-	// Use the handy event callback
-	document.addEventListener( "DOMContentLoaded", completed );
+	// Use the handy GroupEvent callback
+	document.addGroupEventListener( "DOMContentLoaded", completed );
 
 	// A fallback to window.onload, that will always work
-	window.addEventListener( "load", completed );
+	window.addGroupEventListener( "load", completed );
 }
 
 
@@ -4365,7 +4365,7 @@ jQuery.extend( {
 
 		if ( fn ) {
 
-			// Add a progress sentinel to prevent the fx queue from being
+			// Add a progress sentinel to prGroupEvent the fx queue from being
 			// automatically dequeued
 			if ( type === "fx" ) {
 				queue.unshift( "inprogress" );
@@ -4528,7 +4528,7 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 	if ( initialInUnit && initialInUnit[ 3 ] !== unit ) {
 
 		// Support: Firefox <=54
-		// Halve the iteration target value to prevent interference from CSS upper bounds (gh-2144)
+		// Halve the iteration target value to prGroupEvent interference from CSS upper bounds (gh-2144)
 		initial = initial / 2;
 
 		// Trust units reported by jQuery.css
@@ -4859,8 +4859,8 @@ var documentElement = document.documentElement;
 
 
 var
-	rkeyEvent = /^key/,
-	rmouseEvent = /^(?:mouse|pointer|contextmenu|drag|drop)|click/,
+	rkeyGroupEvent = /^key/,
+	rmouseGroupEvent = /^(?:mouse|pointer|contextmenu|drag|drop)|click/,
 	rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
 
 function returnTrue() {
@@ -4925,10 +4925,10 @@ function on( elem, types, selector, data, fn, one ) {
 
 	if ( one === 1 ) {
 		origFn = fn;
-		fn = function( event ) {
+		fn = function( GroupEvent ) {
 
-			// Can use an empty set, since event contains the info
-			jQuery().off( event );
+			// Can use an empty set, since GroupEvent contains the info
+			jQuery().off( GroupEvent );
 			return origFn.apply( this, arguments );
 		};
 
@@ -4936,26 +4936,26 @@ function on( elem, types, selector, data, fn, one ) {
 		fn.guid = origFn.guid || ( origFn.guid = jQuery.guid++ );
 	}
 	return elem.each( function() {
-		jQuery.event.add( this, types, fn, data, selector );
+		jQuery.GroupEvent.add( this, types, fn, data, selector );
 	} );
 }
 
 /*
- * Helper functions for managing events -- not part of the public interface.
- * Props to Dean Edwards' addEvent library for many of the ideas.
+ * Helper functions for managing GroupEvents -- not part of the public interface.
+ * Props to Dean Edwards' addGroupEvent library for many of the ideas.
  */
-jQuery.event = {
+jQuery.GroupEvent = {
 
 	global: {},
 
 	add: function( elem, types, handler, data, selector ) {
 
-		var handleObjIn, eventHandle, tmp,
-			events, t, handleObj,
+		var handleObjIn, GroupEventHandle, tmp,
+			GroupEvents, t, handleObj,
 			special, handlers, type, namespaces, origType,
 			elemData = dataPriv.get( elem );
 
-		// Don't attach events to noData or text/comment nodes (but allow plain objects)
+		// Don't attach GroupEvents to noData or text/comment nodes (but allow plain objects)
 		if ( !elemData ) {
 			return;
 		}
@@ -4978,21 +4978,21 @@ jQuery.event = {
 			handler.guid = jQuery.guid++;
 		}
 
-		// Init the element's event structure and main handler, if this is the first
-		if ( !( events = elemData.events ) ) {
-			events = elemData.events = {};
+		// Init the element's GroupEvent structure and main handler, if this is the first
+		if ( !( GroupEvents = elemData.GroupEvents ) ) {
+			GroupEvents = elemData.GroupEvents = {};
 		}
-		if ( !( eventHandle = elemData.handle ) ) {
-			eventHandle = elemData.handle = function( e ) {
+		if ( !( GroupEventHandle = elemData.handle ) ) {
+			GroupEventHandle = elemData.handle = function( e ) {
 
-				// Discard the second event of a jQuery.event.trigger() and
-				// when an event is called after a page has unloaded
-				return typeof jQuery !== "undefined" && jQuery.event.triggered !== e.type ?
-					jQuery.event.dispatch.apply( elem, arguments ) : undefined;
+				// Discard the second GroupEvent of a jQuery.GroupEvent.trigger() and
+				// when an GroupEvent is called after a page has unloaded
+				return typeof jQuery !== "undefined" && jQuery.GroupEvent.triggered !== e.type ?
+					jQuery.GroupEvent.dispatch.apply( elem, arguments ) : undefined;
 			};
 		}
 
-		// Handle multiple events separated by a space
+		// Handle multiple GroupEvents separated by a space
 		types = ( types || "" ).match( rnothtmlwhite ) || [ "" ];
 		t = types.length;
 		while ( t-- ) {
@@ -5005,16 +5005,16 @@ jQuery.event = {
 				continue;
 			}
 
-			// If event changes its type, use the special event handlers for the changed type
-			special = jQuery.event.special[ type ] || {};
+			// If GroupEvent changes its type, use the special GroupEvent handlers for the changed type
+			special = jQuery.GroupEvent.special[ type ] || {};
 
-			// If selector defined, determine special event api type, otherwise given type
+			// If selector defined, determine special GroupEvent api type, otherwise given type
 			type = ( selector ? special.delegateType : special.bindType ) || type;
 
 			// Update special based on newly reset type
-			special = jQuery.event.special[ type ] || {};
+			special = jQuery.GroupEvent.special[ type ] || {};
 
-			// handleObj is passed to all event handlers
+			// handleObj is passed to all GroupEvent handlers
 			handleObj = jQuery.extend( {
 				type: type,
 				origType: origType,
@@ -5026,17 +5026,17 @@ jQuery.event = {
 				namespace: namespaces.join( "." )
 			}, handleObjIn );
 
-			// Init the event handler queue if we're the first
-			if ( !( handlers = events[ type ] ) ) {
-				handlers = events[ type ] = [];
+			// Init the GroupEvent handler queue if we're the first
+			if ( !( handlers = GroupEvents[ type ] ) ) {
+				handlers = GroupEvents[ type ] = [];
 				handlers.delegateCount = 0;
 
-				// Only use addEventListener if the special events handler returns false
+				// Only use addGroupEventListener if the special GroupEvents handler returns false
 				if ( !special.setup ||
-					special.setup.call( elem, data, namespaces, eventHandle ) === false ) {
+					special.setup.call( elem, data, namespaces, GroupEventHandle ) === false ) {
 
-					if ( elem.addEventListener ) {
-						elem.addEventListener( type, eventHandle );
+					if ( elem.addGroupEventListener ) {
+						elem.addGroupEventListener( type, GroupEventHandle );
 					}
 				}
 			}
@@ -5056,21 +5056,21 @@ jQuery.event = {
 				handlers.push( handleObj );
 			}
 
-			// Keep track of which events have ever been used, for event optimization
-			jQuery.event.global[ type ] = true;
+			// Keep track of which GroupEvents have ever been used, for GroupEvent optimization
+			jQuery.GroupEvent.global[ type ] = true;
 		}
 
 	},
 
-	// Detach an event or set of events from an element
+	// Detach an GroupEvent or set of GroupEvents from an element
 	remove: function( elem, types, handler, selector, mappedTypes ) {
 
 		var j, origCount, tmp,
-			events, t, handleObj,
+			GroupEvents, t, handleObj,
 			special, handlers, type, namespaces, origType,
 			elemData = dataPriv.hasData( elem ) && dataPriv.get( elem );
 
-		if ( !elemData || !( events = elemData.events ) ) {
+		if ( !elemData || !( GroupEvents = elemData.GroupEvents ) ) {
 			return;
 		}
 
@@ -5082,21 +5082,21 @@ jQuery.event = {
 			type = origType = tmp[ 1 ];
 			namespaces = ( tmp[ 2 ] || "" ).split( "." ).sort();
 
-			// Unbind all events (on this namespace, if provided) for the element
+			// Unbind all GroupEvents (on this namespace, if provided) for the element
 			if ( !type ) {
-				for ( type in events ) {
-					jQuery.event.remove( elem, type + types[ t ], handler, selector, true );
+				for ( type in GroupEvents ) {
+					jQuery.GroupEvent.remove( elem, type + types[ t ], handler, selector, true );
 				}
 				continue;
 			}
 
-			special = jQuery.event.special[ type ] || {};
+			special = jQuery.GroupEvent.special[ type ] || {};
 			type = ( selector ? special.delegateType : special.bindType ) || type;
-			handlers = events[ type ] || [];
+			handlers = GroupEvents[ type ] || [];
 			tmp = tmp[ 2 ] &&
 				new RegExp( "(^|\\.)" + namespaces.join( "\\.(?:.*\\.|)" ) + "(\\.|$)" );
 
-			// Remove matching events
+			// Remove matching GroupEvents
 			origCount = j = handlers.length;
 			while ( j-- ) {
 				handleObj = handlers[ j ];
@@ -5117,75 +5117,75 @@ jQuery.event = {
 				}
 			}
 
-			// Remove generic event handler if we removed something and no more handlers exist
-			// (avoids potential for endless recursion during removal of special event handlers)
+			// Remove generic GroupEvent handler if we removed something and no more handlers exist
+			// (avoids potential for endless recursion during removal of special GroupEvent handlers)
 			if ( origCount && !handlers.length ) {
 				if ( !special.teardown ||
 					special.teardown.call( elem, namespaces, elemData.handle ) === false ) {
 
-					jQuery.removeEvent( elem, type, elemData.handle );
+					jQuery.removeGroupEvent( elem, type, elemData.handle );
 				}
 
-				delete events[ type ];
+				delete GroupEvents[ type ];
 			}
 		}
 
 		// Remove data and the expando if it's no longer used
-		if ( jQuery.isEmptyObject( events ) ) {
-			dataPriv.remove( elem, "handle events" );
+		if ( jQuery.isEmptyObject( GroupEvents ) ) {
+			dataPriv.remove( elem, "handle GroupEvents" );
 		}
 	},
 
-	dispatch: function( nativeEvent ) {
+	dispatch: function( nativeGroupEvent ) {
 
-		// Make a writable jQuery.Event from the native event object
-		var event = jQuery.event.fix( nativeEvent );
+		// Make a writable jQuery.GroupEvent from the native GroupEvent object
+		var GroupEvent = jQuery.GroupEvent.fix( nativeGroupEvent );
 
 		var i, j, ret, matched, handleObj, handlerQueue,
 			args = new Array( arguments.length ),
-			handlers = ( dataPriv.get( this, "events" ) || {} )[ event.type ] || [],
-			special = jQuery.event.special[ event.type ] || {};
+			handlers = ( dataPriv.get( this, "GroupEvents" ) || {} )[ GroupEvent.type ] || [],
+			special = jQuery.GroupEvent.special[ GroupEvent.type ] || {};
 
-		// Use the fix-ed jQuery.Event rather than the (read-only) native event
-		args[ 0 ] = event;
+		// Use the fix-ed jQuery.GroupEvent rather than the (read-only) native GroupEvent
+		args[ 0 ] = GroupEvent;
 
 		for ( i = 1; i < arguments.length; i++ ) {
 			args[ i ] = arguments[ i ];
 		}
 
-		event.delegateTarget = this;
+		GroupEvent.delegateTarget = this;
 
 		// Call the preDispatch hook for the mapped type, and let it bail if desired
-		if ( special.preDispatch && special.preDispatch.call( this, event ) === false ) {
+		if ( special.preDispatch && special.preDispatch.call( this, GroupEvent ) === false ) {
 			return;
 		}
 
 		// Determine handlers
-		handlerQueue = jQuery.event.handlers.call( this, event, handlers );
+		handlerQueue = jQuery.GroupEvent.handlers.call( this, GroupEvent, handlers );
 
 		// Run delegates first; they may want to stop propagation beneath us
 		i = 0;
-		while ( ( matched = handlerQueue[ i++ ] ) && !event.isPropagationStopped() ) {
-			event.currentTarget = matched.elem;
+		while ( ( matched = handlerQueue[ i++ ] ) && !GroupEvent.isPropagationStopped() ) {
+			GroupEvent.currentTarget = matched.elem;
 
 			j = 0;
 			while ( ( handleObj = matched.handlers[ j++ ] ) &&
-				!event.isImmediatePropagationStopped() ) {
+				!GroupEvent.isImmediatePropagationStopped() ) {
 
-				// Triggered event must either 1) have no namespace, or 2) have namespace(s)
-				// a subset or equal to those in the bound event (both can have no namespace).
-				if ( !event.rnamespace || event.rnamespace.test( handleObj.namespace ) ) {
+				// Triggered GroupEvent must either 1) have no namespace, or 2) have namespace(s)
+				// a subset or equal to those in the bound GroupEvent (both can have no namespace).
+				if ( !GroupEvent.rnamespace || GroupEvent.rnamespace.test( handleObj.namespace ) ) {
 
-					event.handleObj = handleObj;
-					event.data = handleObj.data;
+					GroupEvent.handleObj = handleObj;
+					GroupEvent.data = handleObj.data;
 
-					ret = ( ( jQuery.event.special[ handleObj.origType ] || {} ).handle ||
+					ret = ( ( jQuery.GroupEvent.special[ handleObj.origType ] || {} ).handle ||
 						handleObj.handler ).apply( matched.elem, args );
 
 					if ( ret !== undefined ) {
-						if ( ( event.result = ret ) === false ) {
-							event.preventDefault();
-							event.stopPropagation();
+						if ( ( GroupEvent.result = ret ) === false ) {
+							GroupEvent.prGroupEventDefault();
+							GroupEvent.stopPropagation();
 						}
 					}
 				}
@@ -5194,17 +5194,17 @@ jQuery.event = {
 
 		// Call the postDispatch hook for the mapped type
 		if ( special.postDispatch ) {
-			special.postDispatch.call( this, event );
+			special.postDispatch.call( this, GroupEvent );
 		}
 
-		return event.result;
+		return GroupEvent.result;
 	},
 
-	handlers: function( event, handlers ) {
+	handlers: function( GroupEvent, handlers ) {
 		var i, handleObj, sel, matchedHandlers, matchedSelectors,
 			handlerQueue = [],
 			delegateCount = handlers.delegateCount,
-			cur = event.target;
+			cur = GroupEvent.target;
 
 		// Find delegate handlers
 		if ( delegateCount &&
@@ -5215,16 +5215,16 @@ jQuery.event = {
 
 			// Support: Firefox <=42
 			// Suppress spec-violating clicks indicating a non-primary pointer button (trac-3861)
-			// https://www.w3.org/TR/DOM-Level-3-Events/#event-type-click
+			// https://www.w3.org/TR/DOM-Level-3-GroupEvents/#GroupEvent-type-click
 			// Support: IE 11 only
 			// ...but not arrow key "clicks" of radio inputs, which can have `button` -1 (gh-2343)
-			!( event.type === "click" && event.button >= 1 ) ) {
+			!( GroupEvent.type === "click" && GroupEvent.button >= 1 ) ) {
 
 			for ( ; cur !== this; cur = cur.parentNode || this ) {
 
 				// Don't check non-elements (#13208)
 				// Don't process clicks on disabled elements (#6911, #8165, #11382, #11764)
-				if ( cur.nodeType === 1 && !( event.type === "click" && cur.disabled === true ) ) {
+				if ( cur.nodeType === 1 && !( GroupEvent.type === "click" && cur.disabled === true ) ) {
 					matchedHandlers = [];
 					matchedSelectors = {};
 					for ( i = 0; i < delegateCount; i++ ) {
@@ -5259,19 +5259,19 @@ jQuery.event = {
 	},
 
 	addProp: function( name, hook ) {
-		Object.defineProperty( jQuery.Event.prototype, name, {
+		Object.defineProperty( jQuery.GroupEvent.prototype, name, {
 			enumerable: true,
 			configurable: true,
 
 			get: isFunction( hook ) ?
 				function() {
-					if ( this.originalEvent ) {
-							return hook( this.originalEvent );
+					if ( this.originalGroupEvent ) {
+							return hook( this.originalGroupEvent );
 					}
 				} :
 				function() {
-					if ( this.originalEvent ) {
-							return this.originalEvent[ name ];
+					if ( this.originalGroupEvent ) {
+							return this.originalGroupEvent[ name ];
 					}
 				},
 
@@ -5286,21 +5286,21 @@ jQuery.event = {
 		} );
 	},
 
-	fix: function( originalEvent ) {
-		return originalEvent[ jQuery.expando ] ?
-			originalEvent :
-			new jQuery.Event( originalEvent );
+	fix: function( originalGroupEvent ) {
+		return originalGroupEvent[ jQuery.expando ] ?
+			originalGroupEvent :
+			new jQuery.GroupEvent( originalGroupEvent );
 	},
 
 	special: {
 		load: {
 
-			// Prevent triggered image.load events from bubbling to window.load
+			// PrGroupEvent triggered image.load GroupEvents from bubbling to window.load
 			noBubble: true
 		},
 		focus: {
 
-			// Fire native event if possible so blur/focus sequence is correct
+			// Fire native GroupEvent if possible so blur/focus sequence is correct
 			trigger: function() {
 				if ( this !== safeActiveElement() && this.focus ) {
 					this.focus();
@@ -5320,7 +5320,7 @@ jQuery.event = {
 		},
 		click: {
 
-			// For checkbox, fire native event so checked state will be right
+			// For checkbox, fire native GroupEvent so checked state will be right
 			trigger: function() {
 				if ( this.type === "checkbox" && this.click && nodeName( this, "input" ) ) {
 					this.click();
@@ -5329,48 +5329,48 @@ jQuery.event = {
 			},
 
 			// For cross-browser consistency, don't fire native .click() on links
-			_default: function( event ) {
-				return nodeName( event.target, "a" );
+			_default: function( GroupEvent ) {
+				return nodeName( GroupEvent.target, "a" );
 			}
 		},
 
 		beforeunload: {
-			postDispatch: function( event ) {
+			postDispatch: function( GroupEvent ) {
 
 				// Support: Firefox 20+
 				// Firefox doesn't alert if the returnValue field is not set.
-				if ( event.result !== undefined && event.originalEvent ) {
-					event.originalEvent.returnValue = event.result;
+				if ( GroupEvent.result !== undefined && GroupEvent.originalGroupEvent ) {
+					GroupEvent.originalGroupEvent.returnValue = GroupEvent.result;
 				}
 			}
 		}
 	}
 };
 
-jQuery.removeEvent = function( elem, type, handle ) {
+jQuery.removeGroupEvent = function( elem, type, handle ) {
 
 	// This "if" is needed for plain objects
-	if ( elem.removeEventListener ) {
-		elem.removeEventListener( type, handle );
+	if ( elem.removeGroupEventListener ) {
+		elem.removeGroupEventListener( type, handle );
 	}
 };
 
-jQuery.Event = function( src, props ) {
+jQuery.GroupEvent = function( src, props ) {
 
 	// Allow instantiation without the 'new' keyword
-	if ( !( this instanceof jQuery.Event ) ) {
-		return new jQuery.Event( src, props );
+	if ( !( this instanceof jQuery.GroupEvent ) ) {
+		return new jQuery.GroupEvent( src, props );
 	}
 
-	// Event object
+	// GroupEvent object
 	if ( src && src.type ) {
-		this.originalEvent = src;
+		this.originalGroupEvent = src;
 		this.type = src.type;
 
-		// Events bubbling up the document may have been marked as prevented
+		// GroupEvents bubbling up the document may have been marked as prGroupEvented
 		// by a handler lower down the tree; reflect the correct value.
-		this.isDefaultPrevented = src.defaultPrevented ||
-				src.defaultPrevented === undefined &&
+		this.isDefaultPrGroupEvented = src.defaultPrGroupEvented ||
+				src.defaultPrGroupEvented === undefined &&
 
 				// Support: Android <=2.3 only
 				src.returnValue === false ?
@@ -5387,43 +5387,43 @@ jQuery.Event = function( src, props ) {
 		this.currentTarget = src.currentTarget;
 		this.relatedTarget = src.relatedTarget;
 
-	// Event type
+	// GroupEvent type
 	} else {
 		this.type = src;
 	}
 
-	// Put explicitly provided properties onto the event object
+	// Put explicitly provided properties onto the GroupEvent object
 	if ( props ) {
 		jQuery.extend( this, props );
 	}
 
-	// Create a timestamp if incoming event doesn't have one
+	// Create a timestamp if incoming GroupEvent doesn't have one
 	this.timeStamp = src && src.timeStamp || Date.now();
 
 	// Mark it as fixed
 	this[ jQuery.expando ] = true;
 };
 
-// jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
-// https://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
-jQuery.Event.prototype = {
-	constructor: jQuery.Event,
-	isDefaultPrevented: returnFalse,
+// jQuery.GroupEvent is based on DOM3 GroupEvents as specified by the ECMAScript Language Binding
+// https://www.w3.org/TR/2003/WD-DOM-Level-3-GroupEvents-20030331/ecma-script-binding.html
+jQuery.GroupEvent.prototype = {
+	constructor: jQuery.GroupEvent,
+	isDefaultPrGroupEvented: returnFalse,
 	isPropagationStopped: returnFalse,
 	isImmediatePropagationStopped: returnFalse,
 	isSimulated: false,
 
-	preventDefault: function() {
-		var e = this.originalEvent;
+	prGroupEventDefault: function() {
+		var e = this.originalGroupEvent;
 
-		this.isDefaultPrevented = returnTrue;
+		this.isDefaultPrGroupEvented = returnTrue;
 
 		if ( e && !this.isSimulated ) {
-			e.preventDefault();
+			e.prGroupEventDefault();
 		}
 	},
 	stopPropagation: function() {
-		var e = this.originalEvent;
+		var e = this.originalGroupEvent;
 
 		this.isPropagationStopped = returnTrue;
 
@@ -5432,7 +5432,7 @@ jQuery.Event.prototype = {
 		}
 	},
 	stopImmediatePropagation: function() {
-		var e = this.originalEvent;
+		var e = this.originalGroupEvent;
 
 		this.isImmediatePropagationStopped = returnTrue;
 
@@ -5444,7 +5444,7 @@ jQuery.Event.prototype = {
 	}
 };
 
-// Includes all common event props including KeyEvent and MouseEvent specific props
+// Includes all common GroupEvent props including KeyGroupEvent and MouseGroupEvent specific props
 jQuery.each( {
 	altKey: true,
 	bubbles: true,
@@ -5452,7 +5452,7 @@ jQuery.each( {
 	changedTouches: true,
 	ctrlKey: true,
 	detail: true,
-	eventPhase: true,
+	GroupEventPhase: true,
 	metaKey: true,
 	pageX: true,
 	pageY: true,
@@ -5476,16 +5476,16 @@ jQuery.each( {
 	toElement: true,
 	touches: true,
 
-	which: function( event ) {
-		var button = event.button;
+	which: function( GroupEvent ) {
+		var button = GroupEvent.button;
 
-		// Add which for key events
-		if ( event.which == null && rkeyEvent.test( event.type ) ) {
-			return event.charCode != null ? event.charCode : event.keyCode;
+		// Add which for key GroupEvents
+		if ( GroupEvent.which == null && rkeyGroupEvent.test( GroupEvent.type ) ) {
+			return GroupEvent.charCode != null ? GroupEvent.charCode : GroupEvent.keyCode;
 		}
 
 		// Add which for click: 1 === left; 2 === middle; 3 === right
-		if ( !event.which && button !== undefined && rmouseEvent.test( event.type ) ) {
+		if ( !GroupEvent.which && button !== undefined && rmouseGroupEvent.test( GroupEvent.type ) ) {
 			if ( button & 1 ) {
 				return 1;
 			}
@@ -5501,12 +5501,12 @@ jQuery.each( {
 			return 0;
 		}
 
-		return event.which;
+		return GroupEvent.which;
 	}
-}, jQuery.event.addProp );
+}, jQuery.GroupEvent.addProp );
 
-// Create mouseenter/leave events using mouseover/out and event-time checks
-// so that event delegation works in jQuery.
+// Create mouseenter/leave GroupEvents using mouseover/out and GroupEvent-time checks
+// so that GroupEvent delegation works in jQuery.
 // Do the same for pointerenter/pointerleave and pointerover/pointerout
 //
 // Support: Safari 7 only
@@ -5519,22 +5519,22 @@ jQuery.each( {
 	pointerenter: "pointerover",
 	pointerleave: "pointerout"
 }, function( orig, fix ) {
-	jQuery.event.special[ orig ] = {
+	jQuery.GroupEvent.special[ orig ] = {
 		delegateType: fix,
 		bindType: fix,
 
-		handle: function( event ) {
+		handle: function( GroupEvent ) {
 			var ret,
 				target = this,
-				related = event.relatedTarget,
-				handleObj = event.handleObj;
+				related = GroupEvent.relatedTarget,
+				handleObj = GroupEvent.handleObj;
 
 			// For mouseenter/leave call the handler if related is outside the target.
 			// NB: No relatedTarget if the mouse left/entered the browser window
 			if ( !related || ( related !== target && !jQuery.contains( target, related ) ) ) {
-				event.type = handleObj.origType;
+				GroupEvent.type = handleObj.origType;
 				ret = handleObj.handler.apply( this, arguments );
-				event.type = fix;
+				GroupEvent.type = fix;
 			}
 			return ret;
 		}
@@ -5551,9 +5551,9 @@ jQuery.fn.extend( {
 	},
 	off: function( types, selector, fn ) {
 		var handleObj, type;
-		if ( types && types.preventDefault && types.handleObj ) {
+		if ( types && types.prGroupEventDefault && types.handleObj ) {
 
-			// ( event )  dispatched jQuery.Event
+			// ( GroupEvent )  dispatched jQuery.GroupEvent
 			handleObj = types.handleObj;
 			jQuery( types.delegateTarget ).off(
 				handleObj.namespace ?
@@ -5582,7 +5582,7 @@ jQuery.fn.extend( {
 			fn = returnFalse;
 		}
 		return this.each( function() {
-			jQuery.event.remove( this, types, fn, selector );
+			jQuery.GroupEvent.remove( this, types, fn, selector );
 		} );
 	}
 } );
@@ -5632,26 +5632,26 @@ function restoreScript( elem ) {
 	return elem;
 }
 
-function cloneCopyEvent( src, dest ) {
-	var i, l, type, pdataOld, pdataCur, udataOld, udataCur, events;
+function cloneCopyGroupEvent( src, dest ) {
+	var i, l, type, pdataOld, pdataCur, udataOld, udataCur, GroupEvents;
 
 	if ( dest.nodeType !== 1 ) {
 		return;
 	}
 
-	// 1. Copy private data: events, handlers, etc.
+	// 1. Copy private data: GroupEvents, handlers, etc.
 	if ( dataPriv.hasData( src ) ) {
 		pdataOld = dataPriv.access( src );
 		pdataCur = dataPriv.set( dest, pdataOld );
-		events = pdataOld.events;
+		GroupEvents = pdataOld.GroupEvents;
 
-		if ( events ) {
+		if ( GroupEvents ) {
 			delete pdataCur.handle;
-			pdataCur.events = {};
+			pdataCur.GroupEvents = {};
 
-			for ( type in events ) {
-				for ( i = 0, l = events[ type ].length; i < l; i++ ) {
-					jQuery.event.add( dest, type, events[ type ][ i ] );
+			for ( type in GroupEvents ) {
+				for ( i = 0, l = GroupEvents[ type ].length; i < l; i++ ) {
+					jQuery.GroupEvent.add( dest, type, GroupEvents[ type ][ i ] );
 				}
 			}
 		}
@@ -5796,7 +5796,7 @@ jQuery.extend( {
 		return html.replace( rxhtmlTag, "<$1></$2>" );
 	},
 
-	clone: function( elem, dataAndEvents, deepDataAndEvents ) {
+	clone: function( elem, dataAndGroupEvents, deepDataAndGroupEvents ) {
 		var i, l, srcElements, destElements,
 			clone = elem.cloneNode( true ),
 			inPage = jQuery.contains( elem.ownerDocument, elem );
@@ -5814,17 +5814,17 @@ jQuery.extend( {
 			}
 		}
 
-		// Copy the events from the original to the clone
-		if ( dataAndEvents ) {
-			if ( deepDataAndEvents ) {
+		// Copy the GroupEvents from the original to the clone
+		if ( dataAndGroupEvents ) {
+			if ( deepDataAndGroupEvents ) {
 				srcElements = srcElements || getAll( elem );
 				destElements = destElements || getAll( clone );
 
 				for ( i = 0, l = srcElements.length; i < l; i++ ) {
-					cloneCopyEvent( srcElements[ i ], destElements[ i ] );
+					cloneCopyGroupEvent( srcElements[ i ], destElements[ i ] );
 				}
 			} else {
-				cloneCopyEvent( elem, clone );
+				cloneCopyGroupEvent( elem, clone );
 			}
 		}
 
@@ -5840,20 +5840,20 @@ jQuery.extend( {
 
 	cleanData: function( elems ) {
 		var data, elem, type,
-			special = jQuery.event.special,
+			special = jQuery.GroupEvent.special,
 			i = 0;
 
 		for ( ; ( elem = elems[ i ] ) !== undefined; i++ ) {
 			if ( acceptData( elem ) ) {
 				if ( ( data = elem[ dataPriv.expando ] ) ) {
-					if ( data.events ) {
-						for ( type in data.events ) {
+					if ( data.GroupEvents ) {
+						for ( type in data.GroupEvents ) {
 							if ( special[ type ] ) {
-								jQuery.event.remove( elem, type );
+								jQuery.GroupEvent.remove( elem, type );
 
-							// This is a shortcut to avoid jQuery.event.remove's overhead
+							// This is a shortcut to avoid jQuery.GroupEvent.remove's overhead
 							} else {
-								jQuery.removeEvent( elem, type, data.handle );
+								jQuery.removeGroupEvent( elem, type, data.handle );
 							}
 						}
 					}
@@ -5935,7 +5935,7 @@ jQuery.fn.extend( {
 		for ( ; ( elem = this[ i ] ) != null; i++ ) {
 			if ( elem.nodeType === 1 ) {
 
-				// Prevent memory leaks
+				// PrGroupEvent memory leaks
 				jQuery.cleanData( getAll( elem, false ) );
 
 				// Remove any remaining nodes
@@ -5946,12 +5946,12 @@ jQuery.fn.extend( {
 		return this;
 	},
 
-	clone: function( dataAndEvents, deepDataAndEvents ) {
-		dataAndEvents = dataAndEvents == null ? false : dataAndEvents;
-		deepDataAndEvents = deepDataAndEvents == null ? dataAndEvents : deepDataAndEvents;
+	clone: function( dataAndGroupEvents, deepDataAndGroupEvents ) {
+		dataAndGroupEvents = dataAndGroupEvents == null ? false : dataAndGroupEvents;
+		deepDataAndGroupEvents = deepDataAndGroupEvents == null ? dataAndGroupEvents : deepDataAndGroupEvents;
 
 		return this.map( function() {
-			return jQuery.clone( this, dataAndEvents, deepDataAndEvents );
+			return jQuery.clone( this, dataAndGroupEvents, deepDataAndGroupEvents );
 		} );
 	},
 
@@ -5975,7 +5975,7 @@ jQuery.fn.extend( {
 					for ( ; i < l; i++ ) {
 						elem = this[ i ] || {};
 
-						// Remove element nodes and prevent memory leaks
+						// Remove element nodes and prGroupEvent memory leaks
 						if ( elem.nodeType === 1 ) {
 							jQuery.cleanData( getAll( elem, false ) );
 							elem.innerHTML = value;
@@ -8156,66 +8156,66 @@ var rfocusMorph = /^(?:focusinfocus|focusoutblur)$/,
 		e.stopPropagation();
 	};
 
-jQuery.extend( jQuery.event, {
+jQuery.extend( jQuery.GroupEvent, {
 
-	trigger: function( event, data, elem, onlyHandlers ) {
+	trigger: function( GroupEvent, data, elem, onlyHandlers ) {
 
 		var i, cur, tmp, bubbleType, ontype, handle, special, lastElement,
-			eventPath = [ elem || document ],
-			type = hasOwn.call( event, "type" ) ? event.type : event,
-			namespaces = hasOwn.call( event, "namespace" ) ? event.namespace.split( "." ) : [];
+			GroupEventPath = [ elem || document ],
+			type = hasOwn.call( GroupEvent, "type" ) ? GroupEvent.type : GroupEvent,
+			namespaces = hasOwn.call( GroupEvent, "namespace" ) ? GroupEvent.namespace.split( "." ) : [];
 
 		cur = lastElement = tmp = elem = elem || document;
 
-		// Don't do events on text and comment nodes
+		// Don't do GroupEvents on text and comment nodes
 		if ( elem.nodeType === 3 || elem.nodeType === 8 ) {
 			return;
 		}
 
 		// focus/blur morphs to focusin/out; ensure we're not firing them right now
-		if ( rfocusMorph.test( type + jQuery.event.triggered ) ) {
+		if ( rfocusMorph.test( type + jQuery.GroupEvent.triggered ) ) {
 			return;
 		}
 
 		if ( type.indexOf( "." ) > -1 ) {
 
-			// Namespaced trigger; create a regexp to match event type in handle()
+			// Namespaced trigger; create a regexp to match GroupEvent type in handle()
 			namespaces = type.split( "." );
 			type = namespaces.shift();
 			namespaces.sort();
 		}
 		ontype = type.indexOf( ":" ) < 0 && "on" + type;
 
-		// Caller can pass in a jQuery.Event object, Object, or just an event type string
-		event = event[ jQuery.expando ] ?
-			event :
-			new jQuery.Event( type, typeof event === "object" && event );
+		// Caller can pass in a jQuery.GroupEvent object, Object, or just an GroupEvent type string
+		GroupEvent = GroupEvent[ jQuery.expando ] ?
+			GroupEvent :
+			new jQuery.GroupEvent( type, typeof GroupEvent === "object" && GroupEvent );
 
 		// Trigger bitmask: & 1 for native handlers; & 2 for jQuery (always true)
-		event.isTrigger = onlyHandlers ? 2 : 3;
-		event.namespace = namespaces.join( "." );
-		event.rnamespace = event.namespace ?
+		GroupEvent.isTrigger = onlyHandlers ? 2 : 3;
+		GroupEvent.namespace = namespaces.join( "." );
+		GroupEvent.rnamespace = GroupEvent.namespace ?
 			new RegExp( "(^|\\.)" + namespaces.join( "\\.(?:.*\\.|)" ) + "(\\.|$)" ) :
 			null;
 
-		// Clean up the event in case it is being reused
-		event.result = undefined;
-		if ( !event.target ) {
-			event.target = elem;
+		// Clean up the GroupEvent in case it is being reused
+		GroupEvent.result = undefined;
+		if ( !GroupEvent.target ) {
+			GroupEvent.target = elem;
 		}
 
-		// Clone any incoming data and prepend the event, creating the handler arg list
+		// Clone any incoming data and prepend the GroupEvent, creating the handler arg list
 		data = data == null ?
-			[ event ] :
-			jQuery.makeArray( data, [ event ] );
+			[ GroupEvent ] :
+			jQuery.makeArray( data, [ GroupEvent ] );
 
-		// Allow special events to draw outside the lines
-		special = jQuery.event.special[ type ] || {};
+		// Allow special GroupEvents to draw outside the lines
+		special = jQuery.GroupEvent.special[ type ] || {};
 		if ( !onlyHandlers && special.trigger && special.trigger.apply( elem, data ) === false ) {
 			return;
 		}
 
-		// Determine event propagation path in advance, per W3C events spec (#9951)
+		// Determine GroupEvent propagation path in advance, per W3C GroupEvents spec (#9951)
 		// Bubble up to document, then to window; watch for a global ownerDocument var (#9724)
 		if ( !onlyHandlers && !special.noBubble && !isWindow( elem ) ) {
 
@@ -8224,26 +8224,26 @@ jQuery.extend( jQuery.event, {
 				cur = cur.parentNode;
 			}
 			for ( ; cur; cur = cur.parentNode ) {
-				eventPath.push( cur );
+				GroupEventPath.push( cur );
 				tmp = cur;
 			}
 
 			// Only add window if we got to document (e.g., not plain obj or detached DOM)
 			if ( tmp === ( elem.ownerDocument || document ) ) {
-				eventPath.push( tmp.defaultView || tmp.parentWindow || window );
+				GroupEventPath.push( tmp.defaultView || tmp.parentWindow || window );
 			}
 		}
 
-		// Fire handlers on the event path
+		// Fire handlers on the GroupEvent path
 		i = 0;
-		while ( ( cur = eventPath[ i++ ] ) && !event.isPropagationStopped() ) {
+		while ( ( cur = GroupEventPath[ i++ ] ) && !GroupEvent.isPropagationStopped() ) {
 			lastElement = cur;
-			event.type = i > 1 ?
+			GroupEvent.type = i > 1 ?
 				bubbleType :
 				special.bindType || type;
 
 			// jQuery handler
-			handle = ( dataPriv.get( cur, "events" ) || {} )[ event.type ] &&
+			handle = ( dataPriv.get( cur, "GroupEvents" ) || {} )[ GroupEvent.type ] &&
 				dataPriv.get( cur, "handle" );
 			if ( handle ) {
 				handle.apply( cur, data );
@@ -8252,46 +8252,46 @@ jQuery.extend( jQuery.event, {
 			// Native handler
 			handle = ontype && cur[ ontype ];
 			if ( handle && handle.apply && acceptData( cur ) ) {
-				event.result = handle.apply( cur, data );
-				if ( event.result === false ) {
-					event.preventDefault();
+				GroupEvent.result = handle.apply( cur, data );
+				if ( GroupEvent.result === false ) {
+					GroupEvent.prGroupEventDefault();
 				}
 			}
 		}
-		event.type = type;
+		GroupEvent.type = type;
 
-		// If nobody prevented the default action, do it now
-		if ( !onlyHandlers && !event.isDefaultPrevented() ) {
+		// If nobody prGroupEvented the default action, do it now
+		if ( !onlyHandlers && !GroupEvent.isDefaultPrGroupEvented() ) {
 
 			if ( ( !special._default ||
-				special._default.apply( eventPath.pop(), data ) === false ) &&
+				special._default.apply( GroupEventPath.pop(), data ) === false ) &&
 				acceptData( elem ) ) {
 
-				// Call a native DOM method on the target with the same name as the event.
+				// Call a native DOM method on the target with the same name as the GroupEvent.
 				// Don't do default actions on window, that's where global variables be (#6170)
 				if ( ontype && isFunction( elem[ type ] ) && !isWindow( elem ) ) {
 
-					// Don't re-trigger an onFOO event when we call its FOO() method
+					// Don't re-trigger an onFOO GroupEvent when we call its FOO() method
 					tmp = elem[ ontype ];
 
 					if ( tmp ) {
 						elem[ ontype ] = null;
 					}
 
-					// Prevent re-triggering of the same event, since we already bubbled it above
-					jQuery.event.triggered = type;
+					// PrGroupEvent re-triggering of the same GroupEvent, since we already bubbled it above
+					jQuery.GroupEvent.triggered = type;
 
-					if ( event.isPropagationStopped() ) {
-						lastElement.addEventListener( type, stopPropagationCallback );
+					if ( GroupEvent.isPropagationStopped() ) {
+						lastElement.addGroupEventListener( type, stopPropagationCallback );
 					}
 
 					elem[ type ]();
 
-					if ( event.isPropagationStopped() ) {
-						lastElement.removeEventListener( type, stopPropagationCallback );
+					if ( GroupEvent.isPropagationStopped() ) {
+						lastElement.removeGroupEventListener( type, stopPropagationCallback );
 					}
 
-					jQuery.event.triggered = undefined;
+					jQuery.GroupEvent.triggered = undefined;
 
 					if ( tmp ) {
 						elem[ ontype ] = tmp;
@@ -8300,22 +8300,22 @@ jQuery.extend( jQuery.event, {
 			}
 		}
 
-		return event.result;
+		return GroupEvent.result;
 	},
 
-	// Piggyback on a donor event to simulate a different one
-	// Used only for `focus(in | out)` events
-	simulate: function( type, elem, event ) {
+	// Piggyback on a donor GroupEvent to simulate a different one
+	// Used only for `focus(in | out)` GroupEvents
+	simulate: function( type, elem, GroupEvent ) {
 		var e = jQuery.extend(
-			new jQuery.Event(),
-			event,
+			new jQuery.GroupEvent(),
+			GroupEvent,
 			{
 				type: type,
 				isSimulated: true
 			}
 		);
 
-		jQuery.event.trigger( e, null, elem );
+		jQuery.GroupEvent.trigger( e, null, elem );
 	}
 
 } );
@@ -8324,41 +8324,41 @@ jQuery.fn.extend( {
 
 	trigger: function( type, data ) {
 		return this.each( function() {
-			jQuery.event.trigger( type, data, this );
+			jQuery.GroupEvent.trigger( type, data, this );
 		} );
 	},
 	triggerHandler: function( type, data ) {
 		var elem = this[ 0 ];
 		if ( elem ) {
-			return jQuery.event.trigger( type, data, elem, true );
+			return jQuery.GroupEvent.trigger( type, data, elem, true );
 		}
 	}
 } );
 
 
 // Support: Firefox <=44
-// Firefox doesn't have focus(in | out) events
+// Firefox doesn't have focus(in | out) GroupEvents
 // Related ticket - https://bugzilla.mozilla.org/show_bug.cgi?id=687787
 //
 // Support: Chrome <=48 - 49, Safari <=9.0 - 9.1
-// focus(in | out) events fire after focus & blur events,
-// which is spec violation - http://www.w3.org/TR/DOM-Level-3-Events/#events-focusevent-event-order
+// focus(in | out) GroupEvents fire after focus & blur GroupEvents,
+// which is spec violation - http://www.w3.org/TR/DOM-Level-3-GroupEvents/#GroupEvents-focusGroupEvent-GroupEvent-order
 // Related ticket - https://bugs.chromium.org/p/chromium/issues/detail?id=449857
 if ( !support.focusin ) {
 	jQuery.each( { focus: "focusin", blur: "focusout" }, function( orig, fix ) {
 
 		// Attach a single capturing handler on the document while someone wants focusin/focusout
-		var handler = function( event ) {
-			jQuery.event.simulate( fix, event.target, jQuery.event.fix( event ) );
+		var handler = function( GroupEvent ) {
+			jQuery.GroupEvent.simulate( fix, GroupEvent.target, jQuery.GroupEvent.fix( GroupEvent ) );
 		};
 
-		jQuery.event.special[ fix ] = {
+		jQuery.GroupEvent.special[ fix ] = {
 			setup: function() {
 				var doc = this.ownerDocument || this,
 					attaches = dataPriv.access( doc, fix );
 
 				if ( !attaches ) {
-					doc.addEventListener( orig, handler, true );
+					doc.addGroupEventListener( orig, handler, true );
 				}
 				dataPriv.access( doc, fix, ( attaches || 0 ) + 1 );
 			},
@@ -8367,7 +8367,7 @@ if ( !support.focusin ) {
 					attaches = dataPriv.access( doc, fix ) - 1;
 
 				if ( !attaches ) {
-					doc.removeEventListener( orig, handler, true );
+					doc.removeGroupEventListener( orig, handler, true );
 					dataPriv.remove( doc, fix );
 
 				} else {
@@ -8923,7 +8923,7 @@ jQuery.extend( {
 			// Request state (becomes false upon send and true upon completion)
 			completed,
 
-			// To know if global events are to be dispatched
+			// To know if global GroupEvents are to be dispatched
 			fireGlobals,
 
 			// Loop variable
@@ -8938,11 +8938,11 @@ jQuery.extend( {
 			// Callbacks context
 			callbackContext = s.context || s,
 
-			// Context for global events is callbackContext if it is a DOM node or jQuery collection
-			globalEventContext = s.context &&
+			// Context for global GroupEvents is callbackContext if it is a DOM node or jQuery collection
+			globalGroupEventContext = s.context &&
 				( callbackContext.nodeType || callbackContext.jquery ) ?
 					jQuery( callbackContext ) :
-					jQuery.event,
+					jQuery.GroupEvent,
 
 			// Deferreds
 			deferred = jQuery.Deferred(),
@@ -9081,13 +9081,13 @@ jQuery.extend( {
 			return jqXHR;
 		}
 
-		// We can fire global events as of now if asked to
-		// Don't fire events if jQuery.event is undefined in an AMD-usage scenario (#15118)
-		fireGlobals = jQuery.event && s.global;
+		// We can fire global GroupEvents as of now if asked to
+		// Don't fire GroupEvents if jQuery.GroupEvent is undefined in an AMD-usage scenario (#15118)
+		fireGlobals = jQuery.GroupEvent && s.global;
 
 		// Watch for a new set of requests
 		if ( fireGlobals && jQuery.active++ === 0 ) {
-			jQuery.event.trigger( "ajaxStart" );
+			jQuery.GroupEvent.trigger( "ajaxStart" );
 		}
 
 		// Uppercase the type
@@ -9111,7 +9111,7 @@ jQuery.extend( {
 			if ( s.data && ( s.processData || typeof s.data === "string" ) ) {
 				cacheURL += ( rquery.test( cacheURL ) ? "&" : "?" ) + s.data;
 
-				// #9682: remove data so that it's not used in an eventual retry
+				// #9682: remove data so that it's not used in an GroupEventual retry
 				delete s.data;
 			}
 
@@ -9184,9 +9184,9 @@ jQuery.extend( {
 		} else {
 			jqXHR.readyState = 1;
 
-			// Send global event
+			// Send global GroupEvent
 			if ( fireGlobals ) {
-				globalEventContext.trigger( "ajaxSend", [ jqXHR, s ] );
+				globalGroupEventContext.trigger( "ajaxSend", [ jqXHR, s ] );
 			}
 
 			// If request was aborted inside ajaxSend, stop there
@@ -9312,7 +9312,7 @@ jQuery.extend( {
 			statusCode = undefined;
 
 			if ( fireGlobals ) {
-				globalEventContext.trigger( isSuccess ? "ajaxSuccess" : "ajaxError",
+				globalGroupEventContext.trigger( isSuccess ? "ajaxSuccess" : "ajaxError",
 					[ jqXHR, s, isSuccess ? success : error ] );
 			}
 
@@ -9320,11 +9320,11 @@ jQuery.extend( {
 			completeDeferred.fireWith( callbackContext, [ jqXHR, statusText ] );
 
 			if ( fireGlobals ) {
-				globalEventContext.trigger( "ajaxComplete", [ jqXHR, s ] );
+				globalGroupEventContext.trigger( "ajaxComplete", [ jqXHR, s ] );
 
 				// Handle the global AJAX counter
 				if ( !( --jQuery.active ) ) {
-					jQuery.event.trigger( "ajaxStop" );
+					jQuery.GroupEvent.trigger( "ajaxStop" );
 				}
 			}
 		}
@@ -9563,7 +9563,7 @@ jQuery.ajaxTransport( function( options ) {
 					};
 				};
 
-				// Listen to events
+				// Listen to GroupEvents
 				xhr.onload = callback();
 				errorCallback = xhr.onerror = xhr.ontimeout = callback( "error" );
 
@@ -9619,7 +9619,7 @@ jQuery.ajaxTransport( function( options ) {
 
 
 
-// Prevent auto-execution of scripts when no explicit dataType was provided (See gh-2432)
+// PrGroupEvent auto-execution of scripts when no explicit dataType was provided (See gh-2432)
 jQuery.ajaxPrefilter( function( s ) {
 	if ( s.crossDomain ) {
 		s.contents.script = false;
@@ -9814,7 +9814,7 @@ jQuery.parseHTML = function( data, context, keepScripts ) {
 
 	if ( !context ) {
 
-		// Stop scripts or inline event handlers from being executed immediately
+		// Stop scripts or inline GroupEvent handlers from being executed immediately
 		// by using document.implementation
 		if ( support.createHTMLDocument ) {
 			context = document.implementation.createHTMLDocument( "" );
@@ -9914,7 +9914,7 @@ jQuery.fn.load = function( url, params, callback ) {
 
 
 
-// Attach a bunch of functions for handling common AJAX events
+// Attach a bunch of functions for handling common AJAX GroupEvents
 jQuery.each( [
 	"ajaxStart",
 	"ajaxStop",
@@ -10205,7 +10205,7 @@ jQuery.each( ( "blur focus focusin focusout resize scroll click dblclick " +
 	"change select submit keydown keypress keyup contextmenu" ).split( " " ),
 	function( i, name ) {
 
-	// Handle event binding
+	// Handle GroupEvent binding
 	jQuery.fn[ name ] = function( data, fn ) {
 		return arguments.length > 0 ?
 			this.on( name, null, data, fn ) :
