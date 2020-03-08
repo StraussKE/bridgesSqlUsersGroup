@@ -20,10 +20,7 @@ namespace bridgesSqlUsersGroup.Models
         public virtual List<Sponsor> EventSponsors { get; set; }
         public virtual List<User> EventAtendees { get; set; }
 
-        // list of ratings in dictionary key/value pairs
-        public List<Dictionary<Guid, int>> UserRatings { get; set; }
-
-        // list of reviews for the event
-        public List<EventReview> EventReviews { get; set; } // UserID and review body
+        public virtual List<Dictionary<User, int>> EventRatings { get; set; } // UserID and rating
+        public virtual List<Dictionary<User, string>> EventReviews { get; set; } // UserID and review body
     }
 }
