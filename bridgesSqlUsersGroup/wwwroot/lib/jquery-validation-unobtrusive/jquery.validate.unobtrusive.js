@@ -66,7 +66,7 @@
         }
     }
 
-    function onErrors(GroupEvent, validator) {  // 'this' is the form element
+    function onErrors(Meeting, validator) {  // 'this' is the form element
         var container = $(this).find("[data-valmsg-summary=true]"),
             list = container.find("ul");
 
@@ -96,7 +96,7 @@
         }
     }
 
-    function onReset(GroupEvent) {  // 'this' is the form element
+    function onReset(Meeting) {  // 'this' is the form element
         var $form = $(this),
             key = '__jquery_unobtrusive_validation_form_reset';
         if ($form.data(key)) {

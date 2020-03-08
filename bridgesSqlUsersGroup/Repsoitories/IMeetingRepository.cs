@@ -6,10 +6,10 @@ using bridgesSqlUsersGroup.Models;
 
 namespace bridgesSqlUsersGroup.Repsoitories
 {
-    interface IGroupEventRepository
+    interface IMeetingRepository
     {
-        IQueryable<GroupEvent> GroupEvents { get; }
+        IQueryable<Meeting> Meetings { get; }
 
-        void AddGroupEvent (GroupEvent groupEvent);
+        void AddMeeting (Meeting meeting);
     }
 }

@@ -12,7 +12,7 @@ namespace bridgesSqlUsersGroup.Models
         // string value of the tag
         public string TagName { get; set; }
 
-        // list of GroupEvents that share this tag
-        public virtual List<GroupEvent> TaggedGroupEvents { get; set; }
+        // list of Meetings that share this tag
+        public virtual List<Meeting> TaggedMeetings { get; set; }
     }
 }

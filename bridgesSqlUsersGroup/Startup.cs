@@ -69,7 +69,7 @@ namespace bridgesSqlUsersGroup
             }).AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
 
             // Inject our repositories into our controllers
-            services.AddTransient<IGroupEventRepository, EFGroupEventRepository>();
+            services.AddTransient<IMeetingRepository, EFMeetingRepository>();
             services.AddTransient<ISpeakerRepository, EFSpeakerRepository>();
             services.AddTransient<ISponsorRepository, EFSponsorRepository>();
             services.AddTransient<ITagRepository, EFTagRepository>();

@@ -16,7 +16,7 @@ namespace bridgesSqlUsersGroup.Models
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options)
             : base(options) { }
 
-        public DbSet<GroupEvent> GroupEvents { get; set; }
+        public DbSet<Meeting> Meetings { get; set; }
         public DbSet<Speaker> Speakers { get; set; }
         public DbSet<Sponsor> Sponsors { get; set; }
         public DbSet<Tag> Tags { get; set; }

@@ -17,7 +17,7 @@
     <script>
         (function () {
             var button = document.querySelector("#cookieConsent button[data-cookie-string]");
-            button.addGroupEventListener("click", function (GroupEvent) {
+            button.addMeetingListener("click", function (Meeting) {
                 document.cookie = button.dataset.cookieString;
             }, false);
         })();

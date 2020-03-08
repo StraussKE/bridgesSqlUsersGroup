@@ -43,11 +43,11 @@ $.extend( $.fn, {
 
 		if ( validator.settings.onsubmit ) {
 
-			this.on( "click.validate", ":submit", function( GroupEvent ) {
+			this.on( "click.validate", ":submit", function( Meeting ) {
 
 				// Track the used submit button to properly handle scripted
 				// submits later.
-				validator.submitButton = GroupEvent.currentTarget;
+				validator.submitButton = Meeting.currentTarget;
 
 				// Allow suppressing validation by adding a cancel class to the submit button
 				if ( $( this ).hasClass( "cancel" ) ) {
@@ -61,11 +61,11 @@ $.extend( $.fn, {
 			} );
 
 			// Validate the form on submit
-			this.on( "submit.validate", function( GroupEvent ) {
+			this.on( "submit.validate", function( Meeting ) {
 				if ( validator.settings.debug ) {
 
-					// PrGroupEvent form submit to be able to see console output
-					GroupEvent.prGroupEventDefault();
+					// PrMeeting form submit to be able to see console output
+					Meeting.prMeetingDefault();
 				}
 				function handle() {
 					var hidden, result;
@@ -83,7 +83,7 @@ $.extend( $.fn, {
 					}
 
 					if ( validator.settings.submitHandler ) {
-						result = validator.settings.submitHandler.call( validator, validator.currentForm, GroupEvent );
+						result = validator.settings.submitHandler.call( validator, validator.currentForm, Meeting );
 						if ( hidden ) {
 
 							// And clean up afterwards; thanks to no-block-scope, hidden can be referenced
@@ -97,7 +97,7 @@ $.extend( $.fn, {
 					return true;
 				}
 
-				// PrGroupEvent submit for invalid forms or custom submit handlers
+				// PrMeeting submit for invalid forms or custom submit handlers
 				if ( validator.cancelSubmit ) {
 					validator.cancelSubmit = false;
 					return handle();
@@ -300,7 +300,7 @@ $.extend( $.validator, {
 				this.element( element );
 			}
 		},
-		onkeyup: function( element, GroupEvent ) {
+		onkeyup: function( element, Meeting ) {
 
 			// Avoid revalidate the field when pressing one of the following keys
 			// Shift       => 16
@@ -321,7 +321,7 @@ $.extend( $.validator, {
 				38, 39, 40, 45, 144, 225
 			];
 
-			if ( GroupEvent.which === 9 && this.elementValue( element ) === "" || $.inArray( GroupEvent.keyCode, excludedKeys ) !== -1 ) {
+			if ( Meeting.which === 9 && this.elementValue( element ) === "" || $.inArray( Meeting.keyCode, excludedKeys ) !== -1 ) {
 				return;
 			} else if ( element.name in this.submitted || element.name in this.invalid ) {
 				this.element( element );
@@ -408,7 +408,7 @@ $.extend( $.validator, {
 				rules[ key ] = $.validator.normalizeRule( value );
 			} );
 
-			function delegate( GroupEvent ) {
+			function delegate( Meeting ) {
 
 				// Set form expando on contenteditable
 				if ( !this.form && this.hasAttribute( "contenteditable" ) ) {
@@ -417,10 +417,10 @@ $.extend( $.validator, {
 				}
 
 				var validator = $.data( this.form, "validator" ),
-					GroupEventType = "on" + GroupEvent.type.replace( /^validate/, "" ),
+					MeetingType = "on" + Meeting.type.replace( /^validate/, "" ),
 					settings = validator.settings;
-				if ( settings[ GroupEventType ] && !$( this ).is( settings.ignore ) ) {
-					settings[ GroupEventType ].call( validator, this, GroupEvent );
+				if ( settings[ MeetingType ] && !$( this ).is( settings.ignore ) ) {
+					settings[ MeetingType ].call( validator, this, Meeting );
 				}
 			}
 
@@ -432,7 +432,7 @@ $.extend( $.validator, {
 					"[type='radio'], [type='checkbox'], [contenteditable], [type='button']", delegate )
 
 				// Support: Chrome, oldIE
-				// "select" is provided as GroupEvent.target when clicking a option
+				// "select" is provided as Meeting.target when clicking a option
 				.on( "click.validate", "select, option, [type='radio'], [type='checkbox']", delegate );
 
 			if ( this.settings.invalidHandler ) {
@@ -612,7 +612,7 @@ $.extend( $.validator, {
 					.filter( ":visible" )
 					.focus()
 
-					// Manually trigger focusin GroupEvent; without it, focusin handler isn't called, findLastActive won't have anything to find
+					// Manually trigger focusin Meeting; without it, focusin handler isn't called, findLastActive won't have anything to find
 					.trigger( "focusin" );
 				} catch ( e ) {
 
@@ -1133,7 +1133,7 @@ $.extend( $.validator, {
 			} );
 		},
 
-		// Cleans up all forms and elements, removes validator-specific GroupEvents
+		// Cleans up all forms and elements, removes validator-specific Meetings
 		destroy: function() {
 			this.resetForm();
 
@@ -1488,7 +1488,7 @@ $.extend( $.validator, {
 		// https://jqueryvalidation.org/equalTo-method/
 		equalTo: function( value, element, param ) {
 
-			// Bind to the blur GroupEvent of the target in order to revalidate whenever the target field is updated
+			// Bind to the blur Meeting of the target in order to revalidate whenever the target field is updated
 			var target = $( param );
 			if ( this.settings.onfocusout && target.not( ".validate-equalTo-blur" ).length ) {
 				target.addClass( "validate-equalTo-blur" ).on( "blur.validate-equalTo", function() {

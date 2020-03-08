@@ -6,21 +6,21 @@ using bridgesSqlUsersGroup.Models;
 
 namespace bridgesSqlUsersGroup.Repsoitories
 {
-    public class EFGroupEventRepository : IGroupEventRepository
+    public class EFMeetingRepository : IMeetingRepository
     {
         private AppIdentityDbContext context;
 
-        public EFGroupEventRepository(AppIdentityDbContext ctx)
+        public EFMeetingRepository(AppIdentityDbContext ctx)
         {
             context = ctx;
         }
 
-        public IQueryable<GroupEvent> GroupEvents => context.GroupEvents;
+        public IQueryable<Meeting> Meetings => context.Meetings;
 
 
-        public void AddGroupEvent(GroupEvent groupEvent)
+        public void AddMeeting(Meeting meeting)
         {
-            context.Add(groupEvent);
+            context.Add(meeting);
             context.SaveChanges();
         }
     }

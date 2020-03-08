@@ -6,10 +6,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace bridgesSqlUsersGroup.Models
 {
-    public class NewGroupEvent
+    public class NewMeeting
     {
         [Required]
-        DateTime GroupEventDate { get; set; }
+        DateTime MeetingDate { get; set; }
 
         [Required]
         String Location { get; set; }
@@ -18,7 +18,7 @@ namespace bridgesSqlUsersGroup.Models
         [MaxLength(60, ErrorMessage ="Your topic name is too long"), MinLength(6, ErrorMessage ="Your topic name is too short")]
         String Topic { get; set; }
 
-        [Required(ErrorMessage = "Please enter an GroupEvent descrition")]
+        [Required(ErrorMessage = "Please enter an Meeting descrition")]
         [MaxLength(3000, ErrorMessage = "Your description must not be more than 3000 characters.")]
         String Description { get; set; }
     }

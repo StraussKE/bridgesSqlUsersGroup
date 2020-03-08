@@ -12,7 +12,7 @@ namespace bridgesSqlUsersGroup.Models
         // Sponsor name for either company or private sponsor
         public string Name { get; set; }
 
-        // list of GroupEvents this sponsor has sponsored
-        public virtual List<GroupEvent> SponsoredGroupEvents { get; set; }
+        // list of Meetings this sponsor has sponsored
+        public virtual List<Meeting> SponsoredMeetings { get; set; }
     }
 }

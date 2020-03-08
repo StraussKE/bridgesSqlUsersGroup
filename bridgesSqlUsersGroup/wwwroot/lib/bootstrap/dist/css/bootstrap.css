@@ -2417,7 +2417,7 @@ textarea.form-control {
 
 a.btn.disabled,
 fieldset:disabled a.btn {
-  pointer-GroupEvents: none;
+  pointer-Meetings: none;
 }
 
 .btn-primary {
@@ -2966,7 +2966,7 @@ fieldset:disabled a.btn {
 
 .btn-link:disabled, .btn-link.disabled {
   color: #6c757d;
-  pointer-GroupEvents: none;
+  pointer-Meetings: none;
 }
 
 .btn-lg, .btn-group-lg > .btn {
@@ -3254,7 +3254,7 @@ input[type="button"].btn-block {
 
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #6c757d;
-  pointer-GroupEvents: none;
+  pointer-Meetings: none;
   background-color: transparent;
 }
 
@@ -3401,7 +3401,7 @@ input[type="button"].btn-block {
 .btn-group-toggle > .btn-group > .btn input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
-  pointer-GroupEvents: none;
+  pointer-Meetings: none;
 }
 
 .input-group {
@@ -3659,7 +3659,7 @@ input[type="button"].btn-block {
   display: block;
   width: 1rem;
   height: 1rem;
-  pointer-GroupEvents: none;
+  pointer-Meetings: none;
   content: "";
   background-color: #fff;
   border: #adb5bd solid 1px;
@@ -3720,7 +3720,7 @@ input[type="button"].btn-block {
 .custom-switch .custom-control-label::before {
   left: -2.25rem;
   width: 1.75rem;
-  pointer-GroupEvents: all;
+  pointer-Meetings: all;
   border-radius: 0.5rem;
 }
 
@@ -4072,7 +4072,7 @@ input[type="button"].btn-block {
 
 .nav-link.disabled {
   color: #6c757d;
-  pointer-GroupEvents: none;
+  pointer-Meetings: none;
   cursor: default;
 }
 
@@ -4888,7 +4888,7 @@ input[type="button"].btn-block {
 
 .page-item.disabled .page-link {
   color: #6c757d;
-  pointer-GroupEvents: none;
+  pointer-Meetings: none;
   cursor: auto;
   background-color: #fff;
   border-color: #dee2e6;
@@ -5369,7 +5369,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .list-group-item.disabled, .list-group-item:disabled {
   color: #6c757d;
-  pointer-GroupEvents: none;
+  pointer-Meetings: none;
   background-color: #fff;
 }
 
@@ -5667,7 +5667,7 @@ button.close {
 }
 
 a.close.disabled {
-  pointer-GroupEvents: none;
+  pointer-Meetings: none;
 }
 
 .toast {
@@ -5742,7 +5742,7 @@ a.close.disabled {
   position: relative;
   width: auto;
   margin: 0.5rem;
-  pointer-GroupEvents: none;
+  pointer-Meetings: none;
 }
 
 .modal.fade .modal-dialog {
@@ -5822,7 +5822,7 @@ a.close.disabled {
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
-  pointer-GroupEvents: auto;
+  pointer-Meetings: auto;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -6218,7 +6218,7 @@ a.close.disabled {
   position: relative;
 }
 
-.carousel.pointer-GroupEvent {
+.carousel.pointer-Meeting {
   -ms-touch-action: pan-y;
   touch-action: pan-y;
 }
@@ -7910,7 +7910,7 @@ button.bg-dark:focus {
   bottom: 0;
   left: 0;
   z-index: 1;
-  pointer-GroupEvents: auto;
+  pointer-Meetings: auto;
   content: "";
   background-color: rgba(0, 0, 0, 0);
 }

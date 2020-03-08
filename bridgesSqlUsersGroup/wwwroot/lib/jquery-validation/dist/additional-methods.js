@@ -539,7 +539,7 @@ $.validator.addMethod( "giroaccountNL", function( value, element ) {
  */
 $.validator.addMethod( "iban", function( value, element ) {
 
-	// Some quick simple tests to prGroupEvent needless work
+	// Some quick simple tests to prMeeting needless work
 	if ( this.optional( element ) ) {
 		return true;
 	}
@@ -635,7 +635,7 @@ $.validator.addMethod( "iban", function( value, element ) {
 
 	// As new countries will start using IBAN in the
 	// future, we only check if the countrycode is known.
-	// This prGroupEvents false negatives, while almost all
+	// This prMeetings false negatives, while almost all
 	// false positives introduced by this, will be caught
 	// by the checksum validation below anyway.
 	// Strict checking should return FALSE for unknown
