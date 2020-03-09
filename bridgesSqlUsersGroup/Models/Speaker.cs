@@ -21,7 +21,8 @@ namespace bridgesSqlUsersGroup.Models
         // list of Meetings this speaker has spoken at
         public virtual List<MeetingSpeaker> MeetingsSpokenAt { get; set; }
 
-        public virtual List<Dictionary<User, int>> SpeakerRatings { get; set; } // UserID and rating
-        public virtual List<Review> SpeakerReviews { get; set; } // UserID and review body
+        //public virtual List<Dictionary<User, int>> SpeakerRatings { get; set; } // UserID and 
+
+        public List<Review> Reviews { get; set; } // UserID and review body
     }
 }

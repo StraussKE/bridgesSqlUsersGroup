@@ -7,7 +7,7 @@ namespace bridgesSqlUsersGroup.Models
 {
     public class UserMeeting
     {
-        public Guid UserId { get; set; }
+        public String UserId { get; set; }
         public User User { get; set; }
 
         public Guid MeetingId { get; set; }

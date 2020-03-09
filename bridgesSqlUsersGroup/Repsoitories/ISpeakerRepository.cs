@@ -12,8 +12,8 @@ namespace bridgesSqlUsersGroup.Repsoitories
 
         void AddSpeaker(Speaker speaker);
 
-        void AddReview(Meeting meeting, Review review);
+        void AddReview(Speaker speaker, Review review);
 
-        void AddReview(Meeting meeting, Review parent, Review child);
+        void AddReview(Speaker speaker, Review parent, Review child);
     }
 }

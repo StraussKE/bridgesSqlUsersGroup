@@ -22,6 +22,6 @@ namespace bridgesSqlUsersGroup.Models
         public virtual List<MeetingSponsor> MeetingSponsors { get; set; }
         public virtual List<UserMeeting> MeetingAtendees { get; set; }
 
-        public virtual List<Dictionary<User, int>> MeetingRatings { get; set; } // UserID and rating
+        //public virtual List<Dictionary<User, int>> MeetingRatings { get; set; } // UserID and rating
     }
 }

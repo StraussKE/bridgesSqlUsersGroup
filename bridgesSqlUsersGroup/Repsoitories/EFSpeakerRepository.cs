@@ -22,5 +22,19 @@ namespace bridgesSqlUsersGroup.Repsoitories
             context.Add(speaker);
             context.SaveChanges();
         }
+
+        public void AddReview(Speaker speaker, Review review)
+        {
+            speaker.Reviews.Add(review);
+            context.Speakers.Update(speaker);
+            context.SaveChanges();
+        }
+
+        public void AddReview(Speaker speaker, Review parent, Review child)
+        {
+            parent.SubReviews.Add(child);
+            context.Speakers.Update(speaker);
+            context.SaveChanges();
+        }
     }
 }

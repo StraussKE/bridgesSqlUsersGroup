@@ -23,6 +23,8 @@ namespace bridgesSqlUsersGroup.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             // Many to Many bridge between user and meeting
             modelBuilder.Entity<UserMeeting>()
                 .HasKey(um => new { um.UserId, um.MeetingId }); // defines composite key

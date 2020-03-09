@@ -16,8 +16,5 @@ namespace bridgesSqlUsersGroup.Models
 
         // list of Meetings that the user has attended
         public virtual List<UserMeeting> AttendedMeetings { get; set; }
-
-        // list of reviews that the user has written for speakers
-        public virtual List<UserSpeaker> ReviewedSpeakers { get; set; }
     }
 }

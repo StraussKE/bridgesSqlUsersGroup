@@ -7,7 +7,7 @@ namespace bridgesSqlUsersGroup.Models
 {
     public class Tag
     {
-        public int TagId { get; set; }
+        public Guid TagId { get; set; }
         
         // string value of the tag
         public string TagName { get; set; }

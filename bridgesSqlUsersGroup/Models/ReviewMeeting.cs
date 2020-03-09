@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 
 namespace bridgesSqlUsersGroup.Models
 {
-    public class Review
+    public class ReviewMeeting : Review
     {
-        public int ReviewId { get; set; }
-        public User Author { get; set; }
-        public List<Review> SubReviews { get; set; }
-        public string ReviewContents { get; set; }
+        public Guid MeetingId { get; set; }
+        public Meeting Meeting { get; set; }
 
         /*Review(string contents)
         {

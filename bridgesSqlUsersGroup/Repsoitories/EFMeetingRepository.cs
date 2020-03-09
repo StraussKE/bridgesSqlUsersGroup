@@ -11,13 +11,11 @@ namespace bridgesSqlUsersGroup.Repsoitories
     {
         private AppIdentityDbContext context;
 
+        public IQueryable<Meeting> Meetings => context.Meetings;
         public EFMeetingRepository(AppIdentityDbContext ctx)
         {
             context = ctx;
         }
-
-        public IQueryable<Meeting> Meetings => context.Meetings;
-
 
         public void AddMeeting(Meeting meeting)
         {
@@ -34,7 +32,7 @@ namespace bridgesSqlUsersGroup.Repsoitories
 
         public void AddReview(Meeting meeting, Review parent, Review child)
         {
-            meeting.Reviews
+            parent.SubReviews.Add(child);
             context.Meetings.Update(meeting);
             context.SaveChanges();
         }
