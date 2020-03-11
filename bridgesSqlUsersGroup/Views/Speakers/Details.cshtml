@@ -1,0 +1,36 @@
+﻿@model bridgesSqlUsersGroup.Models.Speaker
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Speaker</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SpeakerName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SpeakerName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SpeakerTitle)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SpeakerTitle)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SpeakerBio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SpeakerBio)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SpeakerId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
